@@ -21,9 +21,6 @@ Route::get('/customer/register',[ControllerCustomer::class, 'register']);
 Route::post('/customer/register',[ControllerCustomer::class, 'registerSuccess']);
 
 
-
-
-
 Route::get('/data-handle/{id}/path',[DataHandleController::class,'handlePathVariable'] );
 Route::get('/data-handle/query-string',[DataHandleController::class,'handleQueryString'] );
 Route::get('/data-handle/form',[DataHandleController::class,'returnForm'] );
@@ -31,4 +28,7 @@ Route::post('/data-handle/form',[DataHandleController::class,'ProcessForm'] );
 //get la dan vao duong link trong trinh duyet /user
 
 
+Route::get('',[\App\Http\Controllers\LayoutController::class, 'masterLayout']);
+Route::get('/form',[\App\Http\Controllers\LayoutController::class, 'create']);
+Route::get('/list',[\App\Http\Controllers\LayoutController::class, 'list']);
 
