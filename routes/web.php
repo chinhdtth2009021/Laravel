@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\ControllerCustomer;
 use App\Http\Controllers\DataHandleController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\EventTeamplateController;
+use App\Http\Controllers\LayoutController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,20 +18,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {return 'welcome';});
+Route::get('/', function () {
+    return 'welcome';
+});
+//Customer
+Route::get('/customer/register', [ControllerCustomer::class, 'register']);
+Route::post('/customer/register', [ControllerCustomer::class, 'registerSuccess']);
 
-Route::get('/customer/register',[ControllerCustomer::class, 'register']);
-Route::post('/customer/register',[ControllerCustomer::class, 'registerSuccess']);
-
-
-Route::get('/data-handle/{id}/path',[DataHandleController::class,'handlePathVariable'] );
-Route::get('/data-handle/query-string',[DataHandleController::class,'handleQueryString'] );
-Route::get('/data-handle/form',[DataHandleController::class,'returnForm'] );
-Route::post('/data-handle/form',[DataHandleController::class,'ProcessForm'] );
+//DataHanddle
+Route::get('/data-handle/{id}/path', [DataHandleController::class, 'handlePathVariable']);
+Route::get('/data-handle/query-string', [DataHandleController::class, 'handleQueryString']);
+Route::get('/data-handle/form', [DataHandleController::class, 'returnForm']);
+Route::post('/data-handle/form', [DataHandleController::class, 'ProcessForm']);
 //get la dan vao duong link trong trinh duyet /user
 
+//Layout Team Plate
+Route::get('', [LayoutController::class, 'masterLayout']);
+Route::get('/form', [LayoutController::class, 'create']);
+Route::get('/list', [LayoutController::class, 'list']);
 
-Route::get('',[\App\Http\Controllers\LayoutController::class, 'masterLayout']);
-Route::get('/form',[\App\Http\Controllers\LayoutController::class, 'create']);
-Route::get('/list',[\App\Http\Controllers\LayoutController::class, 'list']);
+//Event
+Route::get('/event/events/create', [EventController::class, 'create']);
+Route::post('/event/events/', [EventController::class, 'store']);
+Route::get('/event/events', [EventController::class, 'index']);
 
+//Event Team Plate
+Route::get('/EventTeamplate/event/create', [EventTeamplateController::class, 'create']);
+Route::post('/EventTeamplate/event/create', [EventTeamplateController::class, 'store']);
+Route::get('/EventTeamplate/event/list', [EventTeamplateController::class, 'index']);
+Route::get('/EventTeamplate/event/edit/{id}', [EventTeamplateController::class, 'update']);
+Route::post('/EventTeamplate/event/edit/{id}', [EventTeamplateController::class, 'save']);
+Route::delete('/EventTeamplate/event/delete/{id}', [EventTeamplateController::class, 'delete']);

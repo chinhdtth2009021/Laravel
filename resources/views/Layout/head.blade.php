@@ -53,10 +53,10 @@
     <!-- style CSS
 		============================================ -->
     <link rel="stylesheet" href="/acset/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- responsive CSS
 		============================================ -->
     <link rel="stylesheet" href="/acset/css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- modernizr JS
 		============================================ -->
     <script src="/acset/js/vendor/modernizr-2.8.3.min.js"></script>
