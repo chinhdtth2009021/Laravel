@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ControllerCustomer;
 use App\Http\Controllers\DataHandleController;
+use App\Http\Controllers\DemoValidate;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\EventTeamplateController;
 use App\Http\Controllers\LayoutController;
@@ -49,3 +50,6 @@ Route::get('/EventTeamplate/event/list', [EventTeamplateController::class, 'inde
 Route::get('/EventTeamplate/event/edit/{id}', [EventTeamplateController::class, 'update']);
 Route::post('/EventTeamplate/event/edit/{id}', [EventTeamplateController::class, 'save']);
 Route::delete('/EventTeamplate/event/delete/{id}', [EventTeamplateController::class, 'delete']);
+
+Route::get('/demo/validate/create',[DemoValidate::class, 'create']);
+Route::post('/demo/validate/store',[DemoValidate::class, 'store']);
