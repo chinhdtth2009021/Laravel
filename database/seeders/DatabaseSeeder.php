@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
             CustomerSeeder::class,
             OrderSeeder::class,
             OrderDetailSeeder::class,
+            EventTeamplateSeeder::class,
+
         ]);
         // \App\Models\User::factory(10)->create();
     }

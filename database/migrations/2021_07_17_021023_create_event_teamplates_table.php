@@ -24,6 +24,7 @@ class CreateEventTeamplatesTable extends Migration
             $table->double('ticketPrice');
             $table->integer('status')->default(EventStatus::UP_COMING);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

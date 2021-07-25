@@ -6,6 +6,7 @@ use App\Http\Controllers\DemoValidate;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\EventTeamplateController;
 use App\Http\Controllers\LayoutController;
+use App\Http\Requests\EventRequest;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,10 +47,14 @@ Route::get('/event/events', [EventController::class, 'index']);
 //Event Team Plate
 Route::get('/EventTeamplate/event/create', [EventTeamplateController::class, 'create']);
 Route::post('/EventTeamplate/event/create', [EventTeamplateController::class, 'store']);
-Route::get('/EventTeamplate/event/list', [EventTeamplateController::class, 'index']);
+Route::get('/EventTeamplate/event/list', [EventTeamplateController::class, 'list']);
 Route::get('/EventTeamplate/event/edit/{id}', [EventTeamplateController::class, 'update']);
 Route::post('/EventTeamplate/event/edit/{id}', [EventTeamplateController::class, 'save']);
 Route::delete('/EventTeamplate/event/delete/{id}', [EventTeamplateController::class, 'delete']);
+Route::get('/EventTeamplate/event/create',[EventRequest::class, 'rules']);
+
+
+
 
 Route::get('/demo/validate/create',[DemoValidate::class, 'create']);
 Route::post('/demo/validate/store',[DemoValidate::class, 'store']);

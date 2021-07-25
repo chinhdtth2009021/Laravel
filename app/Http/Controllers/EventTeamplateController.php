@@ -1,45 +1,55 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\EventRequest;
 use App\Models\EventTeamplate;
 use Illuminate\Http\Request;
 
 class EventTeamplateController extends Controller
 {
 
-    public function index()
+    public function list(EventRequest $request)
     {
-        $listEvent = EventTeamplate::all();
-        return view('/users/list', ['list'=>$listEvent]);
-        //
+        $queryBuilder = EventTeamplate::query();
+        $search = $request->query('search');
+        $status = $request->query('status');
+        if($search && strlen($search) > 0){
+            $queryBuilder = $queryBuilder->where('eventName','like','%'.$search.'%')
+                ->orWhere('bandName','like','%'.$search.'%')
+                ->orWhere('portfolio','like','%'.$search.'%');
+        }
+        if($status){
+            $queryBuilder = $queryBuilder->where('status',$status);
+        }
+        $listEvent = $queryBuilder->paginate(10)->appends(['search' => $search, 'status' => $status]);
+        return view('/users/list', [
+            'list' => $queryBuilder,
+            'status' => $status
+
+        ]);
     }
+
     public function create()
     {
-        return view('/users/form');
+        return view('/users/form',[
+            'current'=> null
+            ]);
         //
     }
-    public function store(Request $request)
+    public function store(EventRequest $request)
     {
         $events = new EventTeamplate();
-        $events->fill($request->all());
+        $events->fill($request->validated());
         $events->save();
-        return $events;
+        return redirect('/EventTeamplate/event/list',);
         //
     }
-    public function save(Request $request)
+    public function save(Request $request, $id)
     {
-        $detailEvent = new EventTeamplate();
-//        $detailEvent->eventName = $request->get('eventName');
-//        $detailEvent->bandNames = $request->get('bandNames');
-//        $detailEvent->startDate = $request->get('startDate');
-//        $detailEvent->endDate = $request->get('endDate');
-//        $detailEvent->portfolio = $request->get('portfolio');
-//        $detailEvent->ticketPrice = $request->get('ticketPrice');
-//        $detailEvent->status = $request->get('status');
-        $detailEvent->update($request->all());
+        $detailEvent =  EventTeamplate::find($id);
+        $detailEvent->update($request->valdated());
         $detailEvent->save();
-        return "Edit success";
+        return redirect('/EventTeamplate/event/list');
     }
     public function show($id)
     {
@@ -52,8 +62,8 @@ class EventTeamplateController extends Controller
     }
     public function update($id)
     {
-        $currentEvent = (new EventTeamplate)->find($id);
-        return view('EventTeamplate/event/edit',[
+        $currentEvent = EventTeamplate::find($id);
+        return view('/users/edit',[
             'current' => $currentEvent
         ]);
         //
