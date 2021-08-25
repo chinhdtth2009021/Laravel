@@ -20,4 +20,8 @@ class ServerController extends Controller
         $server = Server::all();
         return $server;
     }
+//    public function create(Request $request)//đẩy dữ liệu từ form lên database
+//    {
+//       return view('.server.form');
+//    }
 }

@@ -5,7 +5,7 @@ php:
   finder:
     not-name:
       - index.php
-      - server.php
+      - servers.php
 js:
   finder:
     not-name:
