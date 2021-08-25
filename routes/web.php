@@ -67,3 +67,10 @@ Route::post('/demo/validate/store',[DemoValidate::class, 'store']);
 Route::get('/product/form',[ProductController::class, 'create']);
 Route::post('/product/form',[ProductController::class, 'store']);
 Route::get('/product/list',[ProductController::class, 'list']);
+
+Route::get('/',function (){
+    return view('.server.list');
+});
+Route::get('/create',function (){
+    return view('.server.form');
+});
