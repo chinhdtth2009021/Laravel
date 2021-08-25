@@ -85,7 +85,7 @@
                                                         <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12" >
                                                             <div class="form-select-list">
                                                                 <select class="form-control custom-select-value" name="status">
-                                                                    <option{{$current->status == \App\Enums\EventStatus::POST_PONE ? 'selected': ''}} value="{{\App\Enums\EventStatus::POST_PONE}}">Post Pone</option>
+                                                                    <option{{$current->status == \App\Enums\EventStatus::POST_PONE ? 'selected': ''}} value ="{{\App\Enums\EventStatus::POST_PONE}}">Post Pone</option>
                                                                     <option{{$current->status == \App\Enums\EventStatus::IS_HAPPENNNG ? 'selected': ''}} value ="{{\App\Enums\EventStatus::IS_HAPPENNNG}}">Is Happening</option>
                                                                     <option{{$current->status == \App\Enums\EventStatus::UP_COMING ? 'selected': ''}} value="{{\App\Enums\EventStatus::UP_COMING}}">Up Coming</option>
                                                                     <option{{$current->status == \App\Enums\EventStatus::TAKE_PLACE ? 'selected': ''}} value="{{\App\Enums\EventStatus::TAKE_PLACE}}">Take Place</option>

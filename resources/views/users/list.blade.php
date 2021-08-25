@@ -66,30 +66,30 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        @include('paginate.template',['list' => $list])
-                    </div>
+{{--                    <div class="row">--}}
+{{--                        @include('paginate.template',['list' => $list])--}}
+{{--                    </div>--}}
                 </div>
             </div>
         </div>
     </div>
 @endsection
-@section('js')
-    <script>
-        const form = document.getElementById('form-filter');
-        const search = document.getElementById('search');
-        const status = document.getElementById('status');
+{{--@section('js')--}}
+{{--    <script>--}}
+{{--        const form = document.getElementById('form-filter');--}}
+{{--        const search = document.getElementById('search');--}}
+{{--        const status = document.getElementById('status');--}}
 
 
-        search.onkeypress = function (event) {
-            if (event.key == 'Enter') {
-                form.submit();
-            }
-        }
-        if (status) {
-            status.onchange = function () {
-                form.submit();
-            }
-        }
-    </script>
-@endsection
+{{--        search.onkeypress = function (event) {--}}
+{{--            if (event.key == 'Enter') {--}}
+{{--                form.submit();--}}
+{{--            }--}}
+{{--        }--}}
+{{--        if (status) {--}}
+{{--            status.onchange = function () {--}}
+{{--                form.submit();--}}
+{{--            }--}}
+{{--        }--}}
+{{--    </script>--}}
+{{--@endsection--}}

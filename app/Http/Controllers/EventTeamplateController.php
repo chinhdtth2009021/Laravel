@@ -22,7 +22,7 @@ class EventTeamplateController extends Controller
             $queryBuilder = $queryBuilder->where('status',$status);
         }
         $listEvent = $queryBuilder->paginate(10)->appends(['search' => $search, 'status' => $status]);
-        return view('/users/list', [
+        return view('.users.list', [
             'list' => $queryBuilder,
             'status' => $status
 
@@ -31,7 +31,7 @@ class EventTeamplateController extends Controller
 
     public function create()
     {
-        return view('/users/form',[
+        return view('.users.form',[
             'current'=> null
             ]);
         //
@@ -63,7 +63,7 @@ class EventTeamplateController extends Controller
     public function update($id)
     {
         $currentEvent = EventTeamplate::find($id);
-        return view('/users/edit',[
+        return view('.users.edit',[
             'current' => $currentEvent
         ]);
         //

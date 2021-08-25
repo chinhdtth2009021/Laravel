@@ -25,6 +25,7 @@ class DataHandleController extends Controller
             return view('/Handle/form-data');
     }
     public function processForm(Request $req){
+
             $eventname = $req->get("eventName");
             $bandnames = $req->get("bandNames");
             $startdate = $req->get("startDate");

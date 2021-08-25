@@ -15,15 +15,15 @@
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="all-form-element-inner">
-                                            @if ($errors->any())
-                                                <div class="alert alert-danger">
-                                                    <ul>
-                                                        @foreach ($errors->all() as $error)
-                                                            <li>{{ $error }}</li>
-                                                        @endforeach
-                                                    </ul>
-                                                </div>
-                                            @endif
+{{--                                            @if ($errors->any())--}}
+{{--                                                <div class="alert alert-danger">--}}
+{{--                                                    <ul>--}}
+{{--                                                        @foreach ($errors->all() as $error)--}}
+{{--                                                            <li>{{ $error }}</li>--}}
+{{--                                                        @endforeach--}}
+{{--                                                    </ul>--}}
+{{--                                                </div>--}}
+{{--                                            @endif--}}
                                             <form action="" method="post">
                                                 @csrf
                                                 <div class="form-group-inner">
@@ -33,11 +33,11 @@
                                                         </div>
                                                         <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                             <input type="text" class="form-control" name="eventName" value="{{$current ? $current->eventName:''}}"/>
-{{--                                                            @error('eventName')--}}
-{{--                                                            <div class="error-message alert-danger ">--}}
-{{--                                                                *{{$message}}--}}
-{{--                                                            </div>--}}
-{{--                                                            @enderror--}}
+                                                            @error('eventName')
+                                                            <div class="error-message alert-danger ">
+                                                                *{{$message}}
+                                                            </div>
+                                                            @enderror
                                                         </div>
                                                     </div>
                                                 </div>
@@ -48,6 +48,11 @@
                                                         </div>
                                                         <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                             <input type="text" class="form-control" name="bandName" value="{{$current ? $current->bandName:''}}"/>
+                                                            @error('bandName')
+                                                            <div class="error-message alert-danger ">
+                                                                *{{$message}}
+                                                            </div>
+                                                            @enderror
                                                         </div>
                                                     </div>
                                                 </div>
@@ -58,6 +63,11 @@
                                                         </div>
                                                         <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                             <input type="date" class="form-control" name="startDate"  value="{{$current ? $current->startDate:''}}"/>
+                                                            @error('startDate')
+                                                            <div class="error-message alert-danger ">
+                                                                *{{$message}}
+                                                            </div>
+                                                            @enderror
                                                         </div>
                                                     </div>
                                                 </div>
@@ -68,6 +78,11 @@
                                                         </div>
                                                         <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                             <input type="date" class="form-control" name="endDate" value="{{$current ? $current->endDate:''}}"/>
+                                                            @error('endDate')
+                                                            <div class="error-message alert-danger ">
+                                                                *{{$message}}
+                                                            </div>
+                                                            @enderror
                                                         </div>
                                                     </div>
                                                 </div>
@@ -78,6 +93,11 @@
                                                         </div>
                                                         <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                             <input type="text" class="form-control" name="portfolio" value="{{$current ? $current->portfolio:''}}"/>
+                                                            @error('portfolio')
+                                                            <div class="error-message alert-danger ">
+                                                                *{{$message}}
+                                                            </div>
+                                                            @enderror
                                                         </div>
                                                     </div>
                                                 </div>
@@ -88,6 +108,11 @@
                                                         </div>
                                                         <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                             <input type="text" class="form-control" name="ticketPrice"  value="{{$current ? $current->ticketPrice:''}}"/>
+                                                            @error('ticketPrice')
+                                                            <div class="error-message alert-danger ">
+                                                                *{{$message}}
+                                                            </div>
+                                                            @enderror
                                                         </div>
                                                     </div>
                                                 </div>
@@ -101,6 +126,11 @@
                                                                 <select class="form-control custom-select-value" name="status">
                                                                     @foreach(\App\Enums\EventStatus::getValues() as $type)
                                                                         <option {{$current && $current->status === $type ? 'selected' : ''}}  value="{{$type}}">{{\App\Enums\EventStatus::getDescription($type)}}</option>
+                                                                        @error('status')
+                                                                        <div class="error-message alert-danger ">
+                                                                            *{{$message}}
+                                                                        </div>
+                                                                        @enderror
                                                                     @endforeach
                                                                 </select>
                                                             </div>
@@ -114,7 +144,7 @@
                                                             <div class="col-lg-9">
                                                                 <div class="login-horizental cancel-wp pull-left form-bc-ele">
                                                                     <button class="btn btn-white" type="submit">Cancel</button>
-                                                                    <button class="btn btn-sm btn-primary login-submit-cs" type="submit">Save Change</button>
+                                                                    <button class="btn btn-sm btn-primary login-submit-cs" type="submit">Submit</button>
                                                                 </div>
                                                             </div>
                                                         </div>

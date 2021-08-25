@@ -4,40 +4,28 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class EventController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $list = Event::all();
-        return  view('/event/events/index',[
+        return  view('.vent.events.index',[
             'list'=>$list]);
 
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        return view('/event/events/create');
+        return view('.event.events.create');
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         $event = new Event();
@@ -48,7 +36,7 @@ class EventController extends Controller
         $event->description =$description;
         $event->price =$price;
         $event->save();
-        return redirect('/event/evens/index');
+        return redirect('/index');
 
         //
     }
@@ -96,5 +84,14 @@ class EventController extends Controller
     public function destroy(Event $event)
     {
         //
+    }
+    public function add(Request $request){
+        $name = $request->get('name');
+        Session::put('name', $name);
+        return 'Ok';
+    }
+    public function get(){
+        $name = Session::get('name');
+        return 'wecome ,' . $name;
     }
 }
